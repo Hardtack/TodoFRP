@@ -14,9 +14,9 @@ import Material
 class TodoListViewController: UIViewController {
     public let disposeBag = DisposeBag()
     
-    private var tableView: UITableView!
-    private var newTodoTextField: TextField!
-    private let checkButtonEventSubject = PublishSubject<Todo>()
+    fileprivate var tableView: UITableView!
+    fileprivate var newTodoTextField: TextField!
+    fileprivate let checkButtonEventSubject = PublishSubject<Todo>()
     
     override func loadView() {
         super.loadView()
@@ -53,7 +53,9 @@ class TodoListViewController: UIViewController {
                  userInteractable: userInteractable)
             .disposed(by: disposeBag)
     }
-    
+}
+
+extension TodoListViewController {
     private func bindTableView(todoListStream: Observable<[Todo]>) -> Disposable {
         tableView.register(TodoTableViewCell.self, forCellReuseIdentifier: "TodoCell")
         tableView.rowHeight = UITableViewAutomaticDimension
