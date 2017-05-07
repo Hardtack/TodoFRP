@@ -16,10 +16,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidFinishLaunching(_ application: UIApplication) {
         window = UIWindow(frame: Screen.bounds)
         
-        let todoViewController = TodoListViewController()
-        let toolbarController = AppToolbarController(rootViewController: todoViewController)
+        let todoListViewController = makeTodoList()
+        
+        let toolbarController = AppToolbarController(rootViewController: todoListViewController)
         window!.rootViewController = toolbarController
         window!.makeKeyAndVisible()
+    }
+    
+    func makeTodoList() -> TodoListViewController {
+        let todoListViewController = TodoListViewController()
+        
+        let model = todoListModel
+        let controller = todoListControllerFactory(gateway: TodoServiceGateway())
+        let renderer = todoListViewController.asRenderer
+        let userInteractable = todoListViewController.asUserInteractable
+        
+        // To load a view
+        _ = todoListViewController.view
+        
+        startMVC(model: model,
+                 renderer: renderer,
+                 controller: controller,
+                 userInteractable: userInteractable)
+            .disposed(by: todoListViewController.disposeBag)
+        return todoListViewController
     }
 }
 

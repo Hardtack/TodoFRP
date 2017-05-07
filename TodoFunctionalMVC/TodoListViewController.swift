@@ -38,28 +38,11 @@ class TodoListViewController: UIViewController {
             .top(44)
             .bottom()
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        let model = todoListModel
-        let controller = todoListControllerFactory(gateway: TodoServiceGateway())
-        let renderer = self.asRenderer
-        let userInteractable = self.asUserInteractable
-        
-        startMVC(model: model,
-                 renderer: renderer,
-                 controller: controller,
-                 userInteractable: userInteractable)
-            .disposed(by: disposeBag)
-    }
 }
 
 extension TodoListViewController {
     private func bindTableView(todoListStream: Observable<[Todo]>) -> Disposable {
         tableView.register(TodoTableViewCell.self, forCellReuseIdentifier: "TodoCell")
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 400
         
         return todoListStream.bind(to: tableView.rx.items(cellIdentifier: "TodoCell", cellType: TodoTableViewCell.self)) {
             (index, todo, cell) in
