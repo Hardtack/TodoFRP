@@ -30,6 +30,9 @@ var todoList: [Todo] = [
 ]
 
 public struct TodoServiceGateway {
+    //    let backgroundScheduler = ConcurrentDispatchQueueScheduler.init(qos: DispatchQoS.background)
+    let backgroundScheduler = MainScheduler.asyncInstance
+    
     /**
      * Emulate remote todo creation
      */
@@ -41,7 +44,7 @@ public struct TodoServiceGateway {
         todoList.append(todo)
         return Observable
             .just(todo)
-            .delay(2.0, scheduler: MainScheduler.asyncInstance)
+            .delay(0.5, scheduler: backgroundScheduler)
     }
     
     /**
@@ -53,7 +56,7 @@ public struct TodoServiceGateway {
         }
         return Observable
             .just(Void())
-            .delay(0.5, scheduler: MainScheduler.asyncInstance)
+            .delay(0.5, scheduler: backgroundScheduler)
     }
     
     /**
@@ -62,6 +65,6 @@ public struct TodoServiceGateway {
     public func index() -> Observable<[Todo]> {
         return Observable
             .just(todoList)
-            .delay(0.5, scheduler: MainScheduler.asyncInstance)
+            .delay(0.5, scheduler: backgroundScheduler)
     }
 }

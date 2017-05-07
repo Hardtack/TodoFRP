@@ -18,8 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let todoViewController = TodoListViewController()
         let toolbarController = AppToolbarController(rootViewController: todoViewController)
-        let menuController = TodoFABMenuController(rootViewController: toolbarController)
-        window!.rootViewController = menuController
+        window!.rootViewController = toolbarController
         window!.makeKeyAndVisible()
     }
 }
