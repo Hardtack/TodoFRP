@@ -15,11 +15,13 @@ import RxCocoa
 enum FABState {
     case opened
     case closed
+    case showingAddTodo
 }
 
 enum FABAction {
     case open
     case close
+    case showAddTodo
 }
 
 enum FABEvent {
@@ -34,6 +36,8 @@ func todoFABMenuModel(actionStream: Observable<FABAction>) -> Observable<FABStat
         return .opened
     case .close:
         return .closed
+    case .showAddTodo:
+        return .showingAddTodo
         }}
     return Observable.concat(head, tail)
 }
@@ -41,6 +45,6 @@ func todoFABMenuModel(actionStream: Observable<FABAction>) -> Observable<FABStat
 func todoFABMenuController(eventStream: Observable<FABEvent>) -> Observable<FABAction> {
     return eventStream.flatMap { event -> Observable<FABAction> in switch (event) {
     case .clickAdd:
-        return Observable.just(FABAction.close)
+        return Observable.from([FABAction.close, FABAction.showAddTodo])
         }}
 }

@@ -16,9 +16,11 @@
 		5A1E75FA1EBC92C300DA9351 /* TodoFunctionalMVCUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1E75F91EBC92C300DA9351 /* TodoFunctionalMVCUITests.swift */; };
 		5A1E760B1EBC930E00DA9351 /* MVCTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1E760A1EBC930E00DA9351 /* MVCTypes.swift */; };
 		5AD4CC781EBCF101000085B1 /* AppToolbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD4CC771EBCF101000085B1 /* AppToolbarController.swift */; };
-		5AD4CC7B1EBD9D0C000085B1 /* AddTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD4CC7A1EBD9D0C000085B1 /* AddTodoViewController.swift */; };
+		5AD4CC7B1EBD9D0C000085B1 /* AddTodoInnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD4CC7A1EBD9D0C000085B1 /* AddTodoInnerViewController.swift */; };
 		5AD4CC7F1EBEE89B000085B1 /* TodoFABMVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD4CC7E1EBEE89B000085B1 /* TodoFABMVC.swift */; };
 		5AD4CC811EBEEA1A000085B1 /* TodoListMVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD4CC801EBEEA1A000085B1 /* TodoListMVC.swift */; };
+		5AD4CC831EBF37A8000085B1 /* AddTodoMVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD4CC821EBF37A8000085B1 /* AddTodoMVC.swift */; };
+		5AD4CC871EBF4F99000085B1 /* AddTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD4CC861EBF4F99000085B1 /* AddTodoViewController.swift */; };
 		5AFE2A151EBC9B6C00BA0591 /* TodoServiceGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFE2A141EBC9B6C00BA0591 /* TodoServiceGateway.swift */; };
 		5AFE2A181EBC9BD000BA0591 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFE2A171EBC9BD000BA0591 /* Todo.swift */; };
 		5AFE2A231EBCD4B700BA0591 /* TodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFE2A221EBCD4B700BA0591 /* TodoTableViewCell.swift */; };
@@ -62,9 +64,11 @@
 		5A1E75FB1EBC92C300DA9351 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A1E760A1EBC930E00DA9351 /* MVCTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVCTypes.swift; sourceTree = "<group>"; };
 		5AD4CC771EBCF101000085B1 /* AppToolbarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppToolbarController.swift; sourceTree = "<group>"; };
-		5AD4CC7A1EBD9D0C000085B1 /* AddTodoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTodoViewController.swift; sourceTree = "<group>"; };
+		5AD4CC7A1EBD9D0C000085B1 /* AddTodoInnerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTodoInnerViewController.swift; sourceTree = "<group>"; };
 		5AD4CC7E1EBEE89B000085B1 /* TodoFABMVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoFABMVC.swift; sourceTree = "<group>"; };
 		5AD4CC801EBEEA1A000085B1 /* TodoListMVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoListMVC.swift; sourceTree = "<group>"; };
+		5AD4CC821EBF37A8000085B1 /* AddTodoMVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTodoMVC.swift; sourceTree = "<group>"; };
+		5AD4CC861EBF4F99000085B1 /* AddTodoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTodoViewController.swift; sourceTree = "<group>"; };
 		5AFE2A141EBC9B6C00BA0591 /* TodoServiceGateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoServiceGateway.swift; sourceTree = "<group>"; };
 		5AFE2A171EBC9BD000BA0591 /* Todo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		5AFE2A221EBCD4B700BA0591 /* TodoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoTableViewCell.swift; sourceTree = "<group>"; };
@@ -173,7 +177,7 @@
 		5A1E76081EBC92EB00DA9351 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
-				5AD4CC791EBD9CF1000085B1 /* New Todo */,
+				5AD4CC791EBD9CF1000085B1 /* Add Todo */,
 				5AD4CC761EBCF0F3000085B1 /* Toolbar */,
 				5AFE2A241EBCDD9400BA0591 /* FAB */,
 				5A1E76071EBC92E400DA9351 /* Todo */,
@@ -197,12 +201,14 @@
 			name = Toolbar;
 			sourceTree = "<group>";
 		};
-		5AD4CC791EBD9CF1000085B1 /* New Todo */ = {
+		5AD4CC791EBD9CF1000085B1 /* Add Todo */ = {
 			isa = PBXGroup;
 			children = (
-				5AD4CC7A1EBD9D0C000085B1 /* AddTodoViewController.swift */,
+				5AD4CC821EBF37A8000085B1 /* AddTodoMVC.swift */,
+				5AD4CC7A1EBD9D0C000085B1 /* AddTodoInnerViewController.swift */,
+				5AD4CC861EBF4F99000085B1 /* AddTodoViewController.swift */,
 			);
-			name = "New Todo";
+			name = "Add Todo";
 			sourceTree = "<group>";
 		};
 		5AFE2A131EBC9B5A00BA0591 /* Gateways */ = {
@@ -545,12 +551,14 @@
 				5AD4CC781EBCF101000085B1 /* AppToolbarController.swift in Sources */,
 				5A1E75DC1EBC92C200DA9351 /* TodoViewController.swift in Sources */,
 				5A1E75DA1EBC92C200DA9351 /* AppDelegate.swift in Sources */,
+				5AD4CC831EBF37A8000085B1 /* AddTodoMVC.swift in Sources */,
 				5AFE2A231EBCD4B700BA0591 /* TodoTableViewCell.swift in Sources */,
 				5AFE2A181EBC9BD000BA0591 /* Todo.swift in Sources */,
 				5AD4CC7F1EBEE89B000085B1 /* TodoFABMVC.swift in Sources */,
 				5AD4CC811EBEEA1A000085B1 /* TodoListMVC.swift in Sources */,
+				5AD4CC871EBF4F99000085B1 /* AddTodoViewController.swift in Sources */,
 				5AFE2A151EBC9B6C00BA0591 /* TodoServiceGateway.swift in Sources */,
-				5AD4CC7B1EBD9D0C000085B1 /* AddTodoViewController.swift in Sources */,
+				5AD4CC7B1EBD9D0C000085B1 /* AddTodoInnerViewController.swift in Sources */,
 				5A1E760B1EBC930E00DA9351 /* MVCTypes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

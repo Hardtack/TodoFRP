@@ -16,41 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidFinishLaunching(_ application: UIApplication) {
         window = UIWindow(frame: Screen.bounds)
         
-        let todoViewController = makeTodoList()
+        let todoViewController = TodoListViewController()
         let toolbarController = AppToolbarController(rootViewController: todoViewController)
-        let menuController = makeTodoFAB(rootViewController: toolbarController)
+        let menuController = TodoFABMenuController(rootViewController: toolbarController)
         window!.rootViewController = menuController
         window!.makeKeyAndVisible()
-    }
-    
-    private func makeTodoFAB(rootViewController: UIViewController) -> TodoFABMenuController {
-        let menuViewController = TodoFABMenuController(rootViewController: rootViewController)
-        let model = todoFABMenuModel
-        let controller = todoFABMenuController
-        let renderer = menuViewController.asRenderer
-        let userInteractable = menuViewController.asUserInteractable
-        
-        startMVC(model: model,
-                 renderer: renderer,
-                 controller: controller,
-                 userInteractable: userInteractable)
-            .disposed(by: menuViewController.disposeBag)
-        return menuViewController
-    }
-    
-    private func makeTodoList() -> TodoListViewController {
-        let todoViewController = TodoListViewController()
-        let model = todoListModel
-        let controller = todoListControllerFactory(gateway: TodoServiceGateway())
-        let renderer = todoViewController.asRenderer
-        let userInteractable = todoViewController.asUserInteractable
-        
-        startMVC(model: model,
-                 renderer: renderer,
-                 controller: controller,
-                 userInteractable: userInteractable)
-            .disposed(by: todoViewController.disposeBag)
-        return todoViewController
     }
 }
 

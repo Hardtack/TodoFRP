@@ -20,9 +20,20 @@ class TodoListViewController: UIViewController {
         self.tableView = UITableView()
         self.view = self.tableView
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let model = todoListModel
+        let controller = todoListControllerFactory(gateway: TodoServiceGateway())
+        let renderer = self.asRenderer
+        let userInteractable = self.asUserInteractable
+        
+        startMVC(model: model,
+                 renderer: renderer,
+                 controller: controller,
+                 userInteractable: userInteractable)
+            .disposed(by: disposeBag)
     }
     
     private func bindTableView(todoListStream: Observable<[Todo]>) -> Disposable {
